@@ -1,5 +1,26 @@
 <template>
+
+
     <section class="container mx-auto px-4 py-8">
+
+        <nav class="p-4">
+            <div class="flex justify-between items-center">
+
+            <ul class="flex gap-4 text-xl">
+                <li><a class="font-bold text-white bg-primary p-2 rounded-[40rem]" href="">Home</a></li>
+                <li><a href="">Reports</a></li>
+                 <li><a href="">Analytics</a></li>
+            </ul>
+
+            <!-- <img src="../assets//drink.jpg" alt="logo" class="size-8 self-center" > -->
+
+            <ul>
+                <li>
+                    <Moon/>
+                </li>
+            </ul>
+            </div>
+        </nav>
 
         <header class="flex flex-row-reverse p-4 gap-4">
 
@@ -120,7 +141,7 @@
 
                 <CardContent>
 
-                    <span class="text-white text-3xl font-bold">10</span>
+                    <span class="text-white text-3xl font-bold">{{ products.length ?? 0 }}</span>
 
                 </CardContent>
 
@@ -135,7 +156,7 @@
 
                 <CardContent>
 
-                    <span class="text-2xl text-gray-800 font-bold">Ksh1000</span>
+                    <span class="text-2xl text-gray-800 font-bold">0</span>
 
                 </CardContent>
 
@@ -205,7 +226,7 @@
 <script setup lang="ts">
 import Card from '~/components/ui/card/Card.vue'
 import CardHeader from '~/components/ui/card/CardHeader.vue'
-import { Store, CircleDollarSign, PlusCircle } from "lucide-vue-next"
+import { Store, CircleDollarSign, PlusCircle , Moon } from "lucide-vue-next"
 import CardContent from '~/components/ui/card/CardContent.vue'
 import Button from '~/components/ui/button/Button.vue'
 import Table from '~/components/ui/table/Table.vue'
@@ -317,6 +338,8 @@ async function add_product(){
     selling_price.value = ""
     description.value = ""
     stock_quantity.value = ""
+
+    await get_all_products()
 
 }
 
